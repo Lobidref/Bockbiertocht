@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bockbiertocht Naaldwijk — 8 November</title>
+
+    <!-- Bricolage Grotesque: bold, variable, editorial display -->
+    <!-- Crimson Pro: warm readable body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Crimson+Pro:ital,wght@0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet">
+
+    <style>
+/* ── TOKENS ─────────────────────────────────────── */
+:root {
+    /* Dark palette */
+    --ink:    #150800;
+    --ink2:   #281402;
+    --ink3:   #3A1E06;
+
+    /* Cream palette */
+    --cream:  #F5EAD4;
+    --cream2: #EDD9B8;
+    --cream3: #E2C898;
+
+    /* Brand */
+    --rust:   #A83A06;
+    --amber:  #C86E10;
+    --gold:   #E09A18;
+    --honey:  #F2BC28;
+
+    /* Utility */
+    --border-dark:  rgba(255,255,255,.08);
+    --border-cream: rgba(21,8,0,.12);
+    --glow:         rgba(168,58,6,.4);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+    background: var(--ink);
+    color: var(--ink);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+/* ── TYPOGRAPHY ─────────────────────────────────── */
+.display {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-optical-sizing: auto;
+    line-height: .92;
+}
+
+.tag {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+}
+
+/* ── NAV ────────────────────────────────────────── */
+#nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.3rem 3rem;
+    transition: background .35s, border-color .35s;
+    border-bottom: 1px solid transparent;
+}
+#nav.opaque {
+    background: rgba(21,8,0,.95);
+    backdrop-filter: blur(14px);
+    border-color: var(--border-dark);
+}
+.nav-brand {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: -.02em;
+    color: var(--honey);
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.nav-right { display: flex; align-items: center; gap: 2.5rem; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: .7rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: rgba(245,234,212,.6);
+    text-decoration: none;
+    transition: color .2s;
+}
+.nav-links a:hover { color: var(--honey); }
+.btn-nav {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: var(--rust);
+    color: var(--cream);
+    padding: .55rem 1.4rem;
+    border-radius: 3px;
+    transition: background .2s;
+}
+.btn-nav:hover { background: var(--amber); }
+
+/* ── HERO ───────────────────────────────────────── */
+#hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    background: var(--ink);
+}
+#hero-video {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: .35;
+    filter: saturate(1.4) brightness(.65);
+}
+.hero-veil {
+    position: absolute; inset: 0;
+    background:
+        linear-gradient(to bottom,
+            rgba(21,8,0,.5)  0%,
+            rgba(21,8,0,.1) 35%,
+            rgba(21,8,0,.55) 72%,
+            rgba(21,8,0,1)  100%);
+}
+#leaves { position: absolute; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
+.leaf {
+    position: absolute; pointer-events: none; opacity: 0;
+    animation: leafFall linear infinite;
+    will-change: transform;
+}
+@keyframes leafFall {
+    0%   { opacity: .9;  transform: translateY(-60px) rotate(0deg)   translateX(0); }
+    30%  {               transform: translateY(30vh)  rotate(110deg)  translateX(32px); }
+    60%  {               transform: translateY(60vh)  rotate(210deg)  translateX(-20px); }
+    100% { opacity: 0;   transform: translateY(108vh) rotate(360deg)  translateX(8px); }
+}
+
+.hero-inner {
+    position: relative; z-index: 2;
+    padding: 2rem 1.5rem;
+    max-width: 1000px;
+}
+.hero-overline {
+    display: inline-flex; align-items: center; gap: .6rem;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--amber);
+    border: 1px solid rgba(200,110,16,.4);
+    padding: .35rem 1rem;
+    border-radius: 3px;
+    margin-bottom: 1.8rem;
+}
+.hero-title {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: clamp(5rem, 16vw, 14rem);
+    font-weight: 800;
+    line-height: .87;
+    letter-spacing: -.03em;
+    text-transform: uppercase;
+    color: var(--cream);
+    text-shadow: 0 0 80px rgba(168,58,6,.6);
+    margin-bottom: .25em;
+}
+.hero-title em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--honey);
+    display: block;
+    font-size: .55em;
+    letter-spacing: -.01em;
+}
+.hero-date {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: clamp(.9rem, 2vw, 1.4rem);
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--cream2);
+    opacity: .75;
+    margin-bottom: 3.5rem;
+}
+.hero-actions {
+    display: flex; gap: 1rem; justify-content: center;
+    align-items: center; flex-wrap: wrap;
+}
+
+/* ── BUTTONS ────────────────────────────────────── */
+.btn {
+    display: inline-block;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    transition: transform .18s, box-shadow .18s, background .18s, color .18s;
+}
+.btn-fill {
+    background: var(--honey);
+    color: var(--ink);
+    padding: 1.1rem 3rem;
+    box-shadow: 0 4px 32px rgba(242,188,40,.3);
+}
+.btn-fill:hover {
+    background: var(--cream);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 40px rgba(242,188,40,.35);
+}
+.btn-ghost {
+    background: transparent;
+    color: var(--cream);
+    border: 1.5px solid rgba(245,234,212,.25);
+    padding: 1.05rem 2.6rem;
+}
+.btn-ghost:hover {
+    border-color: var(--honey);
+    color: var(--honey);
+    transform: translateY(-2px);
+}
+
+/* ── MARQUEE ────────────────────────────────────── */
+.marquee-wrap {
+    background: var(--rust);
+    overflow: hidden;
+    padding: .9rem 0;
+    position: relative;
+    z-index: 2;
+}
+.marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 22s linear infinite;
+}
+@keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+.marquee-item {
+    white-space: nowrap;
+    padding: 0 2rem;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--cream);
+}
+.marquee-sep { color: rgba(245,234,212,.4); }
+
+/* ── CREAM SECTIONS ─────────────────────────────── */
+.cream-section {
+    background: var(--cream);
+    color: var(--ink);
+}
+.dark-section {
+    background: var(--ink);
+    color: var(--cream);
+}
+.ink2-section {
+    background: var(--ink2);
+    color: var(--cream);
+}
+
+section { padding: 7rem 2rem; }
+.wrap { max-width: 1140px; margin: 0 auto; }
+
+/* ── SECTION HEADERS ────────────────────────────── */
+.sec-head { margin-bottom: 4.5rem; }
+.sec-tag {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: .65rem;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    margin-bottom: .6rem;
+    display: block;
+}
+.cream-section .sec-tag { color: var(--amber); }
+.dark-section  .sec-tag { color: var(--amber); }
+.ink2-section  .sec-tag { color: var(--amber); }
+
+.sec-title {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: clamp(2.6rem, 6vw, 5.5rem);
+    font-weight: 800;
+    letter-spacing: -.03em;
+    text-transform: uppercase;
+    line-height: .92;
+}
+.cream-section .sec-title { color: var(--ink); }
+.dark-section  .sec-title { color: var(--cream); }
+.ink2-section  .sec-title { color: var(--cream); }
+
+.sec-sub {
+    margin-top: 1.2rem;
+    font-size: 1.1rem;
+    font-style: italic;
+    max-width: 520px;
+    line-height: 1.8;
+}
+.cream-section .sec-sub { color: rgba(21,8,0,.6); }
+.dark-section  .sec-sub { color: rgba(245,234,212,.6); }
+.ink2-section  .sec-sub { color: rgba(245,234,212,.6); }
+
+/* ── INTRO / STATEMENT SECTION ──────────────────── */
+#intro { padding: 8rem 2rem; }
+.statement {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: clamp(2.2rem, 5.5vw, 5rem);
+    font-weight: 700;
+    letter-spacing: -.025em;
+    line-height: 1.05;
+    color: var(--ink);
+    max-width: 900px;
+    margin: 0 auto;
+}
+.statement em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--amber);
+}
+.statement-sub {
+    max-width: 560px;
+    margin: 2rem auto 0;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: rgba(21,8,0,.6);
+    line-height: 1.8;
+}
+
+/* ── CALLOUT BADGES ─────────────────────────────── */
+.badges {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 5rem;
+}
+.badge-tile {
+    border: 1.5px solid var(--border-cream);
+    padding: 1.8rem 1.5rem;
+    border-radius: 4px;
+    text-align: center;
+}
+.badge-icon { font-size: 2.2rem; display: block; margin-bottom: .8rem; }
+.badge-h {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: .95rem;
+    font-weight: 800;
+    letter-spacing: -.01em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: .4rem;
+}
+.badge-txt { font-size: .9rem; color: rgba(21,8,0,.58); line-height: 1.6; font-style: italic; }
+
+/* ── ROUTE / VENUES ─────────────────────────────── */
+#route { padding: 8rem 2rem; }
+.route-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.stops-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+.stop-card {
+    background: var(--ink2);
+    border: 1px solid var(--border-dark);
+    border-radius: 4px;
+    padding: 2rem 1.8rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color .3s, transform .3s, box-shadow .3s;
+    cursor: default;
+}
+.stop-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(168,58,6,.15) 0%, transparent 60%);
+    pointer-events: none;
+}
+.stop-card:hover {
+    border-color: rgba(200,110,16,.5);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 48px rgba(0,0,0,.4);
+}
+.stop-num {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: .65rem;
+    font-weight: 700;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+}
+.stop-num::after {
+    content: '';
+    display: block;
+    flex: 1;
+    height: 1px;
+    background: var(--border-dark);
+}
+.stop-name {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -.02em;
+    color: var(--cream);
+    line-height: 1.1;
+    margin-bottom: .8rem;
+}
+.stop-dish {
+    font-size: .95rem;
+    font-style: italic;
+    color: rgba(245,234,212,.5);
+    line-height: 1.5;
+}
+.stop-card.featured {
+    background: var(--rust);
+    border-color: var(--amber);
+    grid-column: span 1;
+}
+.stop-card.featured .stop-num { color: var(--honey); }
+.stop-card.featured .stop-num::after { background: rgba(255,255,255,.15); }
+.stop-card.featured .stop-name { color: var(--cream); }
+.stop-card.featured .stop-dish { color: rgba(245,234,212,.75); }
+.stop-start-badge {
+    display: inline-block;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: .6rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,.15);
+    color: var(--cream);
+    padding: .2rem .65rem;
+    border-radius: 2px;
+    margin-top: .8rem;
+}
+
+/* ── INFO / PRAKTISCH ───────────────────────────── */
+#info { padding: 8rem 2rem; }
+.info-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+}
+.info-big {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: clamp(3.5rem, 7vw, 7rem);
+    font-weight: 800;
+    letter-spacing: -.04em;
+    text-transform: uppercase;
+    color: var(--ink);
+    line-height: .9;
+}
+.info-big span {
+    display: block;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--amber);
+    font-size: .55em;
+    letter-spacing: -.01em;
+}
+.info-list { display: flex; flex-direction: column; gap: 1.5rem; }
+.info-row {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-cream);
+}
+.info-row:last-child { border-bottom: none; padding-bottom: 0; }
+.info-lbl {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: .62rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: .25rem;
+}
+.info-val {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -.02em;
+    color: var(--ink);
+    line-height: 1.15;
+}
+.info-note {
+    font-size: .9rem;
+    color: rgba(21,8,0,.55);
+    font-style: italic;
+    margin-top: .2rem;
+}
+
+/* ── TICKETS ────────────────────────────────────── */
+#tickets { padding: 8rem 2rem; }
+.ticket-layout {
+    display: grid;
+    grid-template-columns: 1fr 480px;
+    gap: 5rem;
+    align-items: start;
+}
+.ticket-left .sec-title { margin-bottom: 1.5rem; }
+.ticket-usp {
+    display: flex; flex-direction: column; gap: 1.2rem;
+    margin-top: 2rem;
+}
+.usp-item {
+    display: flex; gap: 1rem; align-items: flex-start;
+}
+.usp-bullet {
+    width: 24px; height: 24px;
+    background: var(--rust);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: .3rem;
+    font-size: .6rem;
+    color: var(--cream);
+}
+.usp-text {
+    font-size: 1rem;
+    color: rgba(245,234,212,.75);
+    line-height: 1.6;
+    font-style: italic;
+}
+
+.ticket-panel {
+    background: var(--cream);
+    border-radius: 6px;
+    padding: 2.8rem 2.5rem;
+    color: var(--ink);
+    position: sticky;
+    top: 7rem;
+}
+.ticket-price {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 6rem;
+    font-weight: 800;
+    letter-spacing: -.04em;
+    color: var(--ink);
+    line-height: 1;
+    margin: .3rem 0 .15rem;
+}
+.ticket-price-note {
+    font-size: .85rem;
+    color: rgba(21,8,0,.5);
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+.tform { display: flex; flex-direction: column; gap: 1rem; }
+.fg { display: flex; flex-direction: column; gap: .3rem; }
+.fg label {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: .62rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(21,8,0,.5);
+}
+.fg input, .fg select {
+    background: var(--cream2);
+    border: 1.5px solid var(--border-cream);
+    color: var(--ink);
+    padding: .8rem 1rem;
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.05rem;
+    border-radius: 3px;
+    outline: none;
+    -webkit-appearance: none;
+    transition: border-color .2s;
+}
+.fg input:focus, .fg select:focus {
+    border-color: var(--amber);
+}
+.fg select option { background: var(--cream2); }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+.total-row {
+    background: var(--ink);
+    padding: .9rem 1.1rem;
+    border-radius: 3px;
+    display: flex; justify-content: space-between; align-items: center;
+}
+.total-lbl {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: .62rem; font-weight: 700;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: rgba(245,234,212,.5);
+}
+.total-amt {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 2rem; font-weight: 800;
+    letter-spacing: -.03em;
+    color: var(--honey);
+}
+.btn-submit {
+    width: 100%; padding: 1.1rem;
+    background: var(--ink);
+    color: var(--honey);
+    border: none;
+    border-radius: 3px;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: .8rem; font-weight: 700;
+    letter-spacing: .14em; text-transform: uppercase;
+    cursor: pointer;
+    transition: background .2s, color .2s, transform .18s;
+    margin-top: .5rem;
+}
+.btn-submit:hover { background: var(--rust); color: var(--cream); transform: translateY(-2px); }
+.form-note { font-size: .82rem; color: rgba(21,8,0,.45); text-align: center; font-style: italic; }
+
+/* Confirmation */
+.confirm { display: none; text-align: center; padding: 2rem 0; }
+.confirm-icon { font-size: 3rem; margin-bottom: 1rem; }
+.confirm h3 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 1.8rem; font-weight: 800;
+    letter-spacing: -.03em;
+    text-transform: uppercase;
+    color: var(--ink); margin-bottom: .7rem;
+}
+.confirm p { font-size: .98rem; color: rgba(21,8,0,.6); max-width: 320px; margin: 0 auto .6rem; }
+
+/* ── SOCIAL / FOOTER ────────────────────────────── */
+#social {
+    padding: 5rem 2rem;
+    background: var(--cream);
+    text-align: center;
+}
+.fb-link {
+    display: inline-flex; align-items: center; gap: .75rem;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: .72rem; font-weight: 700;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    border: 1.5px solid rgba(21,8,0,.2);
+    padding: .9rem 2.2rem;
+    border-radius: 3px;
+    transition: border-color .2s, background .2s, color .2s;
+}
+.fb-link:hover {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--honey);
+}
+footer {
+    background: var(--ink);
+    border-top: 1px solid var(--border-dark);
+    padding: 3.5rem 2rem;
+    text-align: center;
+}
+.foot-brand {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 2rem; font-weight: 800;
+    letter-spacing: -.04em; text-transform: uppercase;
+    color: var(--honey); margin-bottom: .7rem;
+}
+.foot-txt { font-size: .88rem; color: rgba(245,234,212,.4); line-height: 1.9; }
+.foot-nav {
+    display: flex; gap: 2rem; justify-content: center;
+    list-style: none; margin-top: 1.6rem;
+}
+.foot-nav a {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: .65rem; font-weight: 600;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: rgba(245,234,212,.35);
+    text-decoration: none;
+    transition: color .2s;
+}
+.foot-nav a:hover { color: var(--honey); }
+
+/* ── SCROLL REVEAL ──────────────────────────────── */
+.reveal {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity .65s ease, transform .65s ease;
+}
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+/* ── SCROLL HINT ────────────────────────────────── */
+.scroll-hint {
+    position: absolute; bottom: 2.5rem; left: 50%;
+    transform: translateX(-50%); z-index: 2;
+    display: flex; flex-direction: column; align-items: center; gap: .5rem;
+    opacity: .4;
+}
+.scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--amber), transparent); }
+
+/* ── RESPONSIVE ─────────────────────────────────── */
+@media (max-width: 900px) {
+    #nav { padding: 1rem 1.4rem; }
+    .nav-links { display: none; }
+    section { padding: 5rem 1.4rem; }
+    .stops-grid { grid-template-columns: 1fr 1fr; }
+    .info-split { grid-template-columns: 1fr; gap: 3rem; }
+    .ticket-layout { grid-template-columns: 1fr; }
+    .ticket-panel { position: static; }
+    .badges { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 580px) {
+    .stops-grid { grid-template-columns: 1fr; }
+    .badges { grid-template-columns: 1fr; }
+    .row2 { grid-template-columns: 1fr; }
+    .hero-title { font-size: clamp(3.5rem, 18vw, 14rem); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .leaf { display: none; }
+    .marquee-track { animation: none; }
+    .reveal { transition: none; opacity: 1; transform: none; }
+}
+    </style>
+</head>
+<body>
+
+<!-- ── NAV ──────────────────────────────────────── -->
+<nav id="nav">
+    <a class="nav-brand" href="#hero">Bockbiertocht</a>
+    <div class="nav-right">
+        <ul class="nav-links">
+            <li><a href="#route">De Stops</a></li>
+            <li><a href="#info">Info</a></li>
+        </ul>
+        <a href="#tickets" class="btn-nav">Tickets</a>
+    </div>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────── -->
+<section id="hero">
+    <video id="hero-video" autoplay muted loop playsinline preload="auto">
+        <source src="bockbiertocht-video.mp4" type="video/mp4">
+    </video>
+    <div class="hero-veil"></div>
+    <div id="leaves"></div>
+
+    <div class="hero-inner">
+        <span class="hero-overline">Naaldwijk &nbsp;·&nbsp; 8 November &nbsp;·&nbsp; 18+</span>
+        <h1 class="hero-title display">
+            Bock
+            <em>bier</em>
+            tocht
+        </h1>
+        <p class="hero-date">Centrum Naaldwijk &nbsp;·&nbsp; Aanvang 15:00 uur &nbsp;·&nbsp; 6 stops</p>
+        <div class="hero-actions">
+            <a href="#tickets" class="btn btn-fill">Koop je ticket — €40</a>
+            <a href="#route" class="btn btn-ghost">Bekijk de route</a>
+        </div>
+    </div>
+
+    <div class="scroll-hint">
+        <span class="tag" style="color:rgba(200,110,16,.6); font-size:.6rem;">scroll</span>
+        <div class="scroll-line"></div>
+    </div>
+</section>
+
+<!-- ── MARQUEE ───────────────────────────────────── -->
+<div class="marquee-wrap">
+    <div class="marquee-track">
+        <!-- Duplicate for seamless loop -->
+        <span class="marquee-item">8 November</span>
+        <span class="marquee-item marquee-sep">✦</span>
+        <span class="marquee-item">Centrum Naaldwijk</span>
+        <span class="marquee-item marquee-sep">✦</span>
+        <span class="marquee-item">€40 Per Persoon</span>
+        <span class="marquee-item marquee-sep">✦</span>
+        <span class="marquee-item">6 Locaties</span>
+        <span class="marquee-item marquee-sep">✦</span>
+        <span class="marquee-item">Bier + Hapje</span>
+        <span class="marquee-item marquee-sep">✦</span>
+        <span class="marquee-item">Aanvang 15:00</span>
+        <span class="marquee-item marquee-sep">✦</span>
+        <span class="marquee-item">Alleen 18+</span>
+        <span class="marquee-item marquee-sep">✦</span>
+        <span class="marquee-item">Bierglas Cadeau</span>
+        <span class="marquee-item marquee-sep">✦</span>
+        <!-- Duplicate -->
+        <span class="marquee-item">8 November</span>
+        <span class="marquee-item marquee-sep">✦</span>
+        <span class="marquee-item">Centrum Naaldwijk</span>
+        <span class="marquee-item marquee-sep">✦</span>
+        <span class="marquee-item">€40 Per Persoon</span>
+        <span class="marquee-item marquee-sep">✦</span>
+        <span class="marquee-item">6 Locaties</span>
+        <span class="marquee-item marquee-sep">✦</span>
+        <span class="marquee-item">Bier + Hapje</span>
+        <span class="marquee-item marquee-sep">✦</span>
+        <span class="marquee-item">Aanvang 15:00</span>
+        <span class="marquee-item marquee-sep">✦</span>
+        <span class="marquee-item">Alleen 18+</span>
+        <span class="marquee-item marquee-sep">✦</span>
+        <span class="marquee-item">Bierglas Cadeau</span>
+        <span class="marquee-item marquee-sep">✦</span>
+    </div>
+</div>
+
+<!-- ── INTRO STATEMENT ───────────────────────────── -->
+<section id="intro" class="cream-section">
+    <div class="wrap">
+        <p class="statement reveal">
+            Het seizoensbier<br>
+            dat andere avonden<br>
+            <em>onzeker maakt.</em>
+        </p>
+        <p class="statement-sub reveal">
+            Zes horecazaken in het centrum van Naaldwijk openen hun deuren voor één avond bockbier,
+            eigen hapjes en gezelligheid. Jij bepaalt het tempo.
+        </p>
+        <div class="badges reveal">
+            <div class="badge-tile">
+                <span class="badge-icon">🍺</span>
+                <p class="badge-h">Echt bockbier</p>
+                <p class="badge-txt">Seizoensbrouwsel van echte brouwers. Geen doorsnee pilsje.</p>
+            </div>
+            <div class="badge-tile">
+                <span class="badge-icon">🍽</span>
+                <p class="badge-h">Hapje bij elke stop</p>
+                <p class="badge-txt">Elke zaak zijn eigen hapje. Zes stops, zes smaken.</p>
+            </div>
+            <div class="badge-tile">
+                <span class="badge-icon">🥂</span>
+                <p class="badge-h">Bierglas cadeau</p>
+                <p class="badge-txt">Jij houdt je glas. Het enige souvenir dat ertoe doet.</p>
+            </div>
+            <div class="badge-tile">
+                <span class="badge-icon">📍</span>
+                <p class="badge-h">Centrum Naaldwijk</p>
+                <p class="badge-txt">Alles op loopafstand. Je hoeft niets te plannen.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── ROUTE ─────────────────────────────────────── -->
+<section id="route" class="ink2-section">
+    <div class="wrap">
+        <div class="route-header reveal">
+            <div>
+                <span class="sec-tag">De route</span>
+                <h2 class="sec-title">Kies je<br>volgende stop</h2>
+            </div>
+            <a href="#tickets" class="btn btn-fill" style="align-self:flex-end;">Neem een ticket</a>
+        </div>
+
+        <div class="stops-grid">
+
+            <div class="stop-card featured reveal">
+                <p class="stop-num">Stop 01</p>
+                <p class="stop-name">Restaurant Bij5</p>
+                <p class="stop-dish">Signature hapje van de chef</p>
+                <span class="stop-start-badge">✦ Verzamelpunt & start</span>
+            </div>
+
+            <div class="stop-card reveal" style="transition-delay:.08s">
+                <p class="stop-num">Stop 02</p>
+                <p class="stop-name">De Rembrandtpub</p>
+                <p class="stop-dish">Klassiek Hollands borrelhapje</p>
+            </div>
+
+            <div class="stop-card reveal" style="transition-delay:.16s">
+                <p class="stop-num">Stop 03</p>
+                <p class="stop-name">Brasserie Mirell</p>
+                <p class="stop-dish">Seizoens­gebonden kaashapje</p>
+            </div>
+
+            <div class="stop-card reveal" style="transition-delay:.24s">
+                <p class="stop-num">Stop 04</p>
+                <p class="stop-name">Hotel Inn Naaldwijck</p>
+                <p class="stop-dish">Exclusief hotelhapje</p>
+            </div>
+
+            <div class="stop-card reveal" style="transition-delay:.32s">
+                <p class="stop-num">Stop 05</p>
+                <p class="stop-name">Fratelli</p>
+                <p class="stop-dish">Italiaans inspiratiehapje</p>
+            </div>
+
+            <div class="stop-card reveal" style="transition-delay:.4s">
+                <p class="stop-num">Stop 06</p>
+                <p class="stop-name">Café de Slimmerick</p>
+                <p class="stop-dish">Huisgemaakt kroegsnack</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ── INFO ──────────────────────────────────────── -->
+<section id="info" class="cream-section">
+    <div class="wrap">
+        <div class="info-split">
+            <div class="reveal">
+                <span class="sec-tag" style="color:var(--amber); display:block; margin-bottom:.6rem;">Praktische info</span>
+                <p class="info-big">
+                    Alles<br>
+                    wat je<br>
+                    nodig<br>
+                    hebt.
+                    <span>Op één plek.</span>
+                </p>
+            </div>
+            <div class="info-list reveal">
+                <div class="info-row">
+                    <span class="info-lbl">Datum</span>
+                    <span class="info-val">8 November 2025</span>
+                    <span class="info-note">Een zaterdag. Blokkeer je agenda.</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-lbl">Aanvang</span>
+                    <span class="info-val">15:00 uur</span>
+                    <span class="info-note">Jij bepaalt je eigen tempo en volgorde.</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-lbl">Verzamelpunt</span>
+                    <span class="info-val">Bij5 achtertuin</span>
+                    <span class="info-note">Centrum Naaldwijk. Kaartje + glas ophalen.</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-lbl">Prijs</span>
+                    <span class="info-val">€40,— per persoon</span>
+                    <span class="info-note">Inclusief bierglas en hapje bij elke stop.</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-lbl">Leeftijd</span>
+                    <span class="info-val">Alleen 18+</span>
+                    <span class="info-note">Legitimatie kan gevraagd worden bij de stops.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── TICKETS ───────────────────────────────────── -->
+<section id="tickets" class="dark-section">
+    <div class="wrap">
+        <div class="ticket-layout">
+            <div class="ticket-left">
+                <span class="sec-tag" style="display:block; margin-bottom:.7rem;">Tickets</span>
+                <h2 class="sec-title">Doe<br>mee.</h2>
+                <div class="ticket-usp">
+                    <div class="usp-item">
+                        <div class="usp-bullet">✦</div>
+                        <span class="usp-text">Officieel Bockbiertocht bierglas — om te houden</span>
+                    </div>
+                    <div class="usp-item">
+                        <div class="usp-bullet">✦</div>
+                        <span class="usp-text">Toegang tot alle zes deelnemende zaken in Naaldwijk</span>
+                    </div>
+                    <div class="usp-item">
+                        <div class="usp-bullet">✦</div>
+                        <span class="usp-text">Huisgemaakt hapje bij elke stop</span>
+                    </div>
+                    <div class="usp-item">
+                        <div class="usp-bullet">✦</div>
+                        <span class="usp-text">Kaartje ophalen bij Bij5 achtertuin — 8 nov, 15:00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ticket-panel reveal">
+                <span class="tag" style="color:var(--amber); font-size:.62rem;">Ticket 2025</span>
+                <p class="ticket-price">€40</p>
+                <p class="ticket-price-note">Per persoon · incl. bierglas & hapjes · 18+</p>
+
+                <div id="form-wrap">
+                    <form class="tform" id="tform" onsubmit="handleSubmit(event)" novalidate>
+                        <div class="row2">
+                            <div class="fg">
+                                <label for="fn">Voornaam</label>
+                                <input type="text" id="fn" placeholder="Jan" required autocomplete="given-name">
+                            </div>
+                            <div class="fg">
+                                <label for="ln">Achternaam</label>
+                                <input type="text" id="ln" placeholder="de Vries" required autocomplete="family-name">
+                            </div>
+                        </div>
+                        <div class="fg">
+                            <label for="em">E-mailadres</label>
+                            <input type="email" id="em" placeholder="jan@voorbeeld.nl" required autocomplete="email">
+                        </div>
+                        <div class="fg">
+                            <label for="qty">Aantal tickets</label>
+                            <select id="qty" onchange="calcTotal()">
+                                <option value="1">1 ticket — €40</option>
+                                <option value="2">2 tickets — €80</option>
+                                <option value="3">3 tickets — €120</option>
+                                <option value="4">4 tickets — €160</option>
+                                <option value="5">5 tickets — €200</option>
+                                <option value="6">6 tickets — €240</option>
+                            </select>
+                        </div>
+                        <div class="total-row">
+                            <span class="total-lbl">Totaal</span>
+                            <span class="total-amt" id="total">€40</span>
+                        </div>
+                        <button type="submit" class="btn-submit">Reserveer nu →</button>
+                        <p class="form-note" style="margin-top:.6rem;">Bevestiging + betaalinstructies per e-mail.</p>
+                    </form>
+                </div>
+
+                <div class="confirm" id="confirm">
+                    <div class="confirm-icon">🍺</div>
+                    <h3>Proost, <span id="c-name"></span>!</h3>
+                    <p>Reservering ontvangen. Betaalinstructies gaan naar <strong id="c-email"></strong>.</p>
+                    <p style="font-size:.85rem; color:rgba(21,8,0,.45); font-style:italic;">Tot 8 november in Naaldwijk!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── SOCIAL ────────────────────────────────────── -->
+<section id="social" class="cream-section" style="padding:5rem 2rem;">
+    <div class="wrap" style="text-align:center;">
+        <p class="tag" style="color:var(--amber); margin-bottom:1.5rem;">Volg het laatste nieuws</p>
+        <a href="https://www.facebook.com/NaaldwijkHoreca" target="_blank" rel="noopener" class="fb-link">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+            Naaldwijk Horeca op Facebook
+        </a>
+    </div>
+</section>
+
+<!-- ── FOOTER ────────────────────────────────────── -->
+<footer>
+    <p class="foot-brand">Bockbiertocht</p>
+    <p class="foot-txt">
+        8 november &nbsp;·&nbsp; Centrum Naaldwijk &nbsp;·&nbsp; Aanvang 15:00 uur<br>
+        Georganiseerd door Naaldwijk Horeca
+    </p>
+    <ul class="foot-nav">
+        <li><a href="https://www.facebook.com/NaaldwijkHoreca" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="#route">De stops</a></li>
+        <li><a href="#tickets">Tickets</a></li>
+    </ul>
+    <p style="margin-top:2.4rem; font-size:.72rem; color:rgba(245,234,212,.2);">
+        © 2025 Bockbiertocht Naaldwijk &nbsp;·&nbsp; Drink met mate &nbsp;·&nbsp; 18+
+    </p>
+</footer>
+
+<script>
+    // Nav opacity
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('opaque', window.scrollY > 55);
+    }, { passive: true });
+
+    // Leaves
+    const leafBox   = document.getElementById('leaves');
+    const leafChars = ['🍂', '🍁', '🍃'];
+    function spawnLeaf() {
+        const l = document.createElement('span');
+        l.className = 'leaf';
+        l.textContent = leafChars[Math.floor(Math.random() * leafChars.length)];
+        l.style.left = (Math.random() * 100) + 'vw';
+        l.style.fontSize = (.7 + Math.random() * 1.1) + 'rem';
+        const dur = 9 + Math.random() * 11;
+        l.style.animationDuration = dur + 's';
+        l.style.animationDelay   = (Math.random() * 1.5) + 's';
+        leafBox.appendChild(l);
+        setTimeout(() => l.remove(), (dur + 2) * 1000);
+    }
+    for (let i = 0; i < 8; i++) setTimeout(spawnLeaf, i * 300);
+    setInterval(spawnLeaf, 950);
+
+    // Reveal on scroll
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+    }, { threshold: .1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // Ticket total
+    function calcTotal() {
+        const q = parseInt(document.getElementById('qty').value, 10);
+        document.getElementById('total').textContent = '€' + (q * 40);
+    }
+
+    // Submit
+    function handleSubmit(e) {
+        e.preventDefault();
+        const name  = document.getElementById('fn').value.trim();
+        const email = document.getElementById('em').value.trim();
+        if (!name || !email) return;
+        document.getElementById('form-wrap').style.display = 'none';
+        const c = document.getElementById('confirm');
+        c.style.display = 'block';
+        document.getElementById('c-name').textContent  = name;
+        document.getElementById('c-email').textContent = email;
+    }
+</script>
+</body>
+</html>
